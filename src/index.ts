@@ -94,7 +94,7 @@ const commits: Array<Commit> = commitStrings.map(commit => {
 
 	return {
 		hash,
-		author: email.split('@')[0],
+		author: email,
 		message,
 		timestamp: new Date(time),
 		changes: insertions + deletions
@@ -153,14 +153,15 @@ let minDifference: CommitTimeDifference = { difference: Number.MAX_SAFE_INTEGER,
 
 commits.forEach((commit, idx) => {
 	// If the author already exists, update their entry in the authors map, if not, create an entry
-	const authorInfo = authors.get(commit.author);
+	const author = commit.author.split('@')[0];
+	const authorInfo = authors.get(author);
 	if (authorInfo) {
-		authors.set(commit.author, {
+		authors.set(author, {
 			commitCount: authorInfo.commitCount + 1,
 			changes: authorInfo.changes + commit.changes
 		});
 	} else {
-		authors.set(commit.author, {
+		authors.set(author, {
 			commitCount: 1,
 			changes: commit.changes
 		});
