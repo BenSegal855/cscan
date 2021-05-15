@@ -1,0 +1,26 @@
+{
+  "name": "cscan",
+  "version": "1.0.0",
+  "description": "A CLI tool to get info about a repositories commits.",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/src/index.js",
+    "build": "tsc -p .",
+    "dev": "rm -rf dist && tsc-watch --onSuccess \"echo Compile Complete\"",
+    "make": "tsc -p . && pkg dist/src/index.js --output bin/cscan",
+    "clean": "rm -rf dist bin"
+  },
+  "author": "Ben Segal",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^15.0.3",
+    "@types/yargs": "^16.0.1",
+    "pkg": "^5.1.0",
+    "tsc-watch": "^4.2.9",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "yargs": "^17.0.1"
+  }
+}

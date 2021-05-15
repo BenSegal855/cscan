@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "outDir": "./dist",
+        "resolveJsonModule": true,
+        "rootDir": "./",
+		"target": "ES2019",
+        "module": "commonjs"
+    }
+}
