@@ -29,4 +29,4 @@ pnpm make
 ```
 
 ### Developing
-Since this is TS and doesn't need to be compiled into a binary, its annoying to compile one every time you make a change. To reduce the wait time between writing code and running it, I made the `dev` script to transpile the TS to JS on every file change. You can run `pnpm dev` to start this script and then `npm start` or `node .` to run the transpiled JS.
+Since this is TS and doesn't need to be compiled into a binary, its annoying to compile one every time you make a change. To reduce the wait time between writing code and running it, I made the `dev` script to transpile the TS to JS on every file change. You can run `pnpm dev` to start this script and then `pnpm start` or `node .` to run the transpiled JS.
