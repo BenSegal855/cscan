@@ -209,7 +209,7 @@ authors.forEach(({ commitCount, changes }, author) => {
 	if (!argv.verbose) {
 		authorInfo += `\t${author} made ${commitCount} ${pluralize('commit', commitCount)} and ${changePercent}% of changes\n`;
 	} else {
-		const authorCommits = commits.filter(commit => commit.author === author).sort((a, b) => a.changes - b.changes);
+		const authorCommits = commits.filter(commit => commit.author.split('@')[0] === author).sort((a, b) => a.changes - b.changes);
 		const largest = authorCommits.pop();
 		const smallest = authorCommits.shift();
 		authorInfo +=`\n\t${author}\n\t\t${commitCount} ${pluralize('commit', commitCount)} and ${changes} ${pluralize('change', changes)}\n` +
