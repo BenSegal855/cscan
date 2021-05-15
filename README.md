@@ -7,10 +7,10 @@ Usage: cscan [options] [path]
 
 Options:
   -v, --verbose    Displays results with more detail then the usual scan	[boolean] [default: false]
-  -c, --concise    Displays a concise readout of scan results 				[boolean] [default: false]
-  -t, --threshold  Commit message character threshold     					[number] [default: 10]
-      --csv        Saves commit history as a .csv file						[boolean] [default: false]
-      --out        Specify output location of .csv file 					[string] [default: "./commits.csv"]
+  -c, --concise    Displays a concise readout of scan results       			[boolean] [default: false]
+  -t, --threshold  Commit message character threshold     					      [number] [default: 10]
+      --csv        Saves commit history as a .csv file						        [boolean] [default: false]
+      --out        Specify output location of .csv file 					        [string] [default: "./commits.csv"]
   -h, --help       Show help                                           		[boolean]
 ```
 
