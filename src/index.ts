@@ -1,11 +1,13 @@
 import { execSync } from 'child_process';
 import path from 'path';
 import { writeFileSync } from 'fs';
+import { version } from '../package.json';
 import yargs from 'yargs';
 
 const argv = yargs
 	.help()
 	.alias('h', 'help')
+	.version(false)
 	.option('verbose', {
 		alias: 'v',
 		description: 'Displays results with more detail then the usual scan',
@@ -35,8 +37,11 @@ const argv = yargs
 		default: './commits.csv',
 		normalize: true
 	})
+	.option('version', {
+		description: 'Show version number',
+		type: 'boolean'
+	})
 	.usage('$0 is a git commit scanner made by Ben Segal.\nUsage: $0 [options] [path]')
-	.version(false)
 	.argv;
 
 type Commit = {
@@ -51,6 +56,17 @@ type CommitTimeDifference = {
 	firstCommit: Commit,
 	secondCommit: Commit
 };
+
+if (argv.version) {
+	console.log(`v${version}`);
+	process.exit();
+}
+
+// Check for valid options
+if (argv.verbose && argv.concise) {
+	console.error('I can\'t be concise and verbose at the same time!');
+	process.exit(1);
+}
 
 // Run git log and exit if there is an error
 let rawLog: Buffer;
@@ -84,12 +100,6 @@ const commits: Array<Commit> = commitStrings.map(commit => {
 		changes: insertions + deletions
 	}
 });
-
-// Check for valid options
-if (argv.verbose && argv.concise) {
-	console.error('I can\'t be concise and verbose at the same time!');
-	process.exit(1);
-}
 
 // Generate CSV
 if (argv.csv) {
