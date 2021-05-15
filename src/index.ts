@@ -212,7 +212,9 @@ const uniquePercent = Math.round((uniqueMessages.size / commits.length) * 100);
 
 timeDifferences.sort();
 const midpoint = Math.ceil(timeDifferences.length / 2);
-const meanCommitTime = timeDifferences.reduce((a, b) => a + b) / timeDifferences.length;
+const meanCommitTime = timeDifferences.length > 1
+	? timeDifferences.reduce((a, b) => a + b) / timeDifferences.length
+	: timeDifferences[0];
 const medianCommitTime = timeDifferences.length % 2 === 0
 	? (timeDifferences[midpoint] + timeDifferences[midpoint - 1]) / 2
 	: timeDifferences[midpoint - 1];
